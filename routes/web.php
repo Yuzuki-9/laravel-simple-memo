@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// URLに名前をつけておくと、formのaction属性にroute関数でURLを定義できる
+Route::get('/home', [HomeController::class, 'index'])->name('home');  // getはURLにアクセスしてページを見に行く（データを取りに行く）
+Route::post('/store', [HomeController::class, 'store'])->name('store');  // なにか保存したいとき（データを投げる）
